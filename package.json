@@ -1,0 +1,25 @@
+{
+  "name": "http2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "server": "ts-node-dev --no-notify --respawn --transpileOnly ./src/server.ts",
+    "client": "ts-node-dev --no-notify --respawn --transpileOnly ./src/client.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^13.7.5",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard-with-typescript": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.2"
+  }
+}
