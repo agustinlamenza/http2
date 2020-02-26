@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "server": "ts-node-dev --no-notify --respawn --transpileOnly ./src/server.ts",
-    "client": "ts-node-dev --no-notify --respawn --transpileOnly ./src/client.ts"
+    "server": "ts-node-dev --no-notify --clear --respawn --transpile-only ./src/server.ts",
+    "client": "ts-node-dev --no-notify --clear --respawn --transpile-only ./src/client.ts"
   },
   "author": "",
   "license": "ISC",

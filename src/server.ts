@@ -23,7 +23,9 @@ server.on('stream', (stream, headers) => {
     [http2.constants.HTTP2_HEADER_STATUS]: http2.constants.HTTP_STATUS_ACCEPTED
   })
 
-  stream.write('this is a test \n', 'utf8')
+  stream.setDefaultEncoding('utf8')
+
+  stream.write('this is a test \n')
 
   stream.end('<h1>Hello World!!!</h1>')
 })
