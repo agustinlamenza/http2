@@ -3,4 +3,5 @@
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "eslint.format.enable": true,
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }
