@@ -7,23 +7,42 @@ const client = http2.connect('https://localhost:8443', {
 
 client.on('error', (err) => console.error(err))
 
-const req = client.request({ ':path': '/test/como/va?saludo=comoVa' })
-
-req.on('response', (headers, flags) => {
-  // for (const name in headers) {
-  //   console.log(`${name}: ${headers[name]}`)
-  // }
-  console.log(headers)
-  console.log(flags)
+client.on('stream', (pushedStream, headers) => {
+  pushedStream.on('push', (responseHeaders) => {
+    // Process response headers
+    console.log(responseHeaders)
+  })
+  pushedStream.on('data', (chunk) => {
+    console.log(chunk)
+  })
 })
 
+const req = client.request({ ':path': '/test/como/va?saludo=comoVa' })
+
+// req.on('response', (headers, flags) => {
+//   // for (const name in headers) {
+//   //   console.log(`${name}: ${headers[name]}`)
+//   // }
+//   console.log(headers)
+//   console.log(flags)
+// }
+
 req.setEncoding('utf8')
-let data = ''
-// eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-req.on('data', (chunk) => { data += chunk })
+
+// req.push(new Date().toString())
+// setInterval(() => {
+// }, 1000)
+
+req.on('data', (chunk) => {
+  console.log(chunk)
+})
+
+// req.write(new Date().toString())
+
 req.on('end', () => {
-  console.log(`\n${data}`)
+  // console.log(`\n${data}`)
+  console.log('END')
   client.close()
 })
 
-req.end()
+// req.end('test')

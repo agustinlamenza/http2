@@ -10,12 +10,12 @@ server.on('error', (err) => console.error(err))
 
 server.on('stream', (stream, headers) => {
   stream.on('error', (err) => console.log(err))
-  console.log(headers)
-  const method = headers[http2.constants.HTTP2_HEADER_METHOD]
-  const path = headers[http2.constants.HTTP2_HEADER_PATH]
+  // console.log(headers)
+  // const method = headers[http2.constants.HTTP2_HEADER_METHOD]
+  // const path = headers[http2.constants.HTTP2_HEADER_PATH]
 
-  console.log(method)
-  console.log(path)
+  // console.log(method)
+  // console.log(path)
 
   // stream is a Duplex
   stream.respond({
@@ -25,9 +25,16 @@ server.on('stream', (stream, headers) => {
 
   stream.setDefaultEncoding('utf8')
 
-  stream.write('this is a test \n')
+  stream.on('data', (chunk) => {
+    console.log(chunk)
+  })
 
-  stream.end('<h1>Hello World!!!</h1>')
+  // stream.write('this is a test \n')
+  // stream.write('this is a test \n')
+  // stream.write('this is a test \n')
+  // stream.write('this is a test \n')
+
+  // stream.end('<h1>Hello World!!!</h1>')
 })
 
 server.listen(8443, () => {
